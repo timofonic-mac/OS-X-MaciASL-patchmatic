@@ -169,7 +169,7 @@ static NSString *bootlog;
     }
     //NSInteger acpi = [NSUserDefaults.standardUserDefaults integerForKey:@"acpi"];
     NSInteger acpi = 61;    //REHABMAN: for disassembly, use ACPI 6.1 always 
-    if (acpi != 4)
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"legacyasl"] && acpi != 4)
         [args insertObject:@"-dl" atIndex:0];
     NSString *path = [iASL tempFile:@"iASLXXXXXX.aml"];
     [NSFileManager.defaultManager createFileAtPath:path contents:aml attributes:nil];
